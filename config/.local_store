@@ -1,0 +1,30 @@
+{
+    "TestForceForecasting.cls": {
+        "createdById": "00558000000EBBgAAO",
+        "createdByName": "Korben Carreno",
+        "createdDate": "2015-12-03T13:34:41.000Z",
+        "fileName": "unpackaged/classes/TestForceForecasting.cls",
+        "fullName": "TestForceForecasting",
+        "id": "01p580000006O2PAAU",
+        "lastModifiedById": "00558000000EBBgAAO",
+        "lastModifiedByName": "Korben Carreno",
+        "lastModifiedDate": "2015-12-03T13:41:52.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass",
+        "mmState": "clean"
+    },
+    "ForceForecasting.trigger": {
+        "createdById": "00558000000EBBgAAO",
+        "createdByName": "Korben Carreno",
+        "createdDate": "2015-12-03T13:33:20.000Z",
+        "fileName": "unpackaged/triggers/ForceForecasting.trigger",
+        "fullName": "ForceForecasting",
+        "id": "01q580000004KxuAAE",
+        "lastModifiedById": "00558000000EBBgAAO",
+        "lastModifiedByName": "Korben Carreno",
+        "lastModifiedDate": "2015-12-03T13:34:19.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexTrigger",
+        "mmState": "clean"
+    }
+}
