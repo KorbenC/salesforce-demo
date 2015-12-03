@@ -165,13 +165,16 @@ var buildCoverallsCoverage = function () {
 			lo.forEach(data, function (row) {
 				class_id = row.ApexClassOrTriggerId;
         console.log(class_id);
+        console.log(lo.has(id_to_class_map, class_id));
 				if (lo.has(id_to_class_map, class_id)) {
 					max_line = lo.max(lo.union(row.Coverage.coveredLines, row.Coverage.uncoveredLines));
 					coverage_size = lo.size(id_to_class_map[class_id].coverage);
           console.log(coverage_size);
+          console.log(max_line);
 					if (max_line > coverage_size) {
 						for (i = coverage_size; i <= max_line; i += 1) {
 							id_to_class_map[class_id].coverage.push(null);
+              console.log('we are pushing null...');
 						}
 					}
 
