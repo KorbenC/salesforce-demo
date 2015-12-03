@@ -55,7 +55,7 @@ var buildClassIdToClassDataMap = function () {
 			deferred.reject(new Error(error));
 		} else {
 			console.log('Got information about ' + lo.size(data) + ' classes');
-
+      console.log(data);
 			lo.forEach(data, function (row) {
 				if (row.Body.indexOf('@isTest') === -1) {
 					id_to_class_map[row.Id] = {
@@ -164,7 +164,8 @@ var buildCoverallsCoverage = function () {
 
 			lo.forEach(data, function (row) {
 				class_id = row.ApexClassOrTriggerId;
-        console.log(class_id);
+        console.log('class_id '+class_id);
+        console.log('id_to_class_map '+ id_to_class_map);
         console.log(lo.has(id_to_class_map, class_id));
 				if (lo.has(id_to_class_map, class_id)) {
 					max_line = lo.max(lo.union(row.Coverage.coveredLines, row.Coverage.uncoveredLines));
