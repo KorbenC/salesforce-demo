@@ -164,11 +164,11 @@ var buildCoverallsCoverage = function () {
 
 			lo.forEach(data, function (row) {
 				class_id = row.ApexClassOrTriggerId;
-
+        console.log(class_id);
 				if (lo.has(id_to_class_map, class_id)) {
 					max_line = lo.max(lo.union(row.Coverage.coveredLines, row.Coverage.uncoveredLines));
 					coverage_size = lo.size(id_to_class_map[class_id].coverage);
-
+          console.log(coverage_size);
 					if (max_line > coverage_size) {
 						for (i = coverage_size; i <= max_line; i += 1) {
 							id_to_class_map[class_id].coverage.push(null);
@@ -215,7 +215,7 @@ var postToCoveralls = function () {
 
 	console.log('Posting data to coveralls');
   console.log(JSON.stringify(coveralls_data));
-  console.log(COVERALLS_REPO_TOKEN);
+  console.log(lo.values(id_to_class_map));
 
 	fs.writeFile('/tmp/coveralls_data.json', JSON.stringify(coveralls_data), function (fs_error) {
 		if (fs_error) {
