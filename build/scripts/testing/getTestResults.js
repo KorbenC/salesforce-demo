@@ -169,6 +169,10 @@ var buildCoverallsCoverage = function () {
         console.log('class_id '+class_id);
         console.log('id_to_class_map '+ id_to_class_map);
         console.log(lo.has(id_to_class_map, class_id));
+        console.log('coverage_size ' +id_to_class_map[class_id].coverage);
+        console.log('max_line ' +max_line);
+        console.log('coveredLines ' +row.Coverage.coveredLines);
+        console.log('uncoveredLines ' +row.Coverage.uncoveredLines);
 				if (lo.has(id_to_class_map, class_id)) {
 					max_line = lo.max(lo.union(row.Coverage.coveredLines, row.Coverage.uncoveredLines));
 					coverage_size = lo.size(id_to_class_map[class_id].coverage);
