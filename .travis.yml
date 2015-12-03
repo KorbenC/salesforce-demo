@@ -6,3 +6,4 @@ branches:
           - master
 before_script: ./build/scripts/setup_credentials.sh
 script: ./build/scripts/deploy.sh
+after_success: ./build/scripts/run_tests.sh
