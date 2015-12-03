@@ -57,6 +57,7 @@ var buildClassIdToClassDataMap = function () {
 			console.log('Got information about ' + lo.size(data) + ' classes');
       console.log(data);
 			lo.forEach(data, function (row) {
+        console.log(row.Body.indexOf('@isTest') === -1);
 				if (row.Body.indexOf('@isTest') === -1) {
 					id_to_class_map[row.Id] = {
 						name: path_template(row),
@@ -70,7 +71,8 @@ var buildClassIdToClassDataMap = function () {
 					};
 				}
 			});
-
+      console.log('test_class_map ' +test_class_map);
+      console.log('id_to_class_map ' +id_to_class_map);
 			deferred.resolve();
 		}
 	});
@@ -83,7 +85,7 @@ var buildClassIdToClassDataMap = function () {
 */
 var runAllTests = function () {
 	'use strict';
-
+  console.log('entering runAllTests function...');
 	var class_ids = lo.keys(test_class_map),
 		deferred = Q.defer();
 
@@ -94,7 +96,7 @@ var runAllTests = function () {
 			deferred.resolve(data);
 		}
 	});
-
+  console.log('class_ids ' +class_ids);
 	return deferred.promise;
 };
 
@@ -219,7 +221,6 @@ var postToCoveralls = function () {
 
 	console.log('Posting data to coveralls');
   console.log(JSON.stringify(coveralls_data));
-  console.log(lo.values(id_to_class_map));
 
 	fs.writeFile('/tmp/coveralls_data.json', JSON.stringify(coveralls_data), function (fs_error) {
 		if (fs_error) {
