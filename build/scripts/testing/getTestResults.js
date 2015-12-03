@@ -214,6 +214,8 @@ var postToCoveralls = function () {
 		};
 
 	console.log('Posting data to coveralls');
+  console.log(JSON.stringify(coveralls_data));
+  console.log(COVERALLS_REPO_TOKEN);
 
 	fs.writeFile('/tmp/coveralls_data.json', JSON.stringify(coveralls_data), function (fs_error) {
 		if (fs_error) {
