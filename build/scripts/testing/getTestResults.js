@@ -55,9 +55,8 @@ var buildClassIdToClassDataMap = function () {
 			deferred.reject(new Error(error));
 		} else {
 			console.log('Got information about ' + lo.size(data) + ' classes');
-      console.log(data);
+
 			lo.forEach(data, function (row) {
-        console.log(row.Body.indexOf('@isTest') === -1);
 				if (row.Body.indexOf('@isTest') === -1) {
 					id_to_class_map[row.Id] = {
 						name: path_template(row),
@@ -71,8 +70,7 @@ var buildClassIdToClassDataMap = function () {
 					};
 				}
 			});
-      console.log('test_class_map ' +test_class_map);
-      console.log('id_to_class_map ' +id_to_class_map);
+
 			deferred.resolve();
 		}
 	});
@@ -85,7 +83,7 @@ var buildClassIdToClassDataMap = function () {
 */
 var runAllTests = function () {
 	'use strict';
-  console.log('entering runAllTests function...');
+
 	var class_ids = lo.keys(test_class_map),
 		deferred = Q.defer();
 
@@ -96,7 +94,7 @@ var runAllTests = function () {
 			deferred.resolve(data);
 		}
 	});
-  console.log('class_ids ' +class_ids);
+
 	return deferred.promise;
 };
 
@@ -164,23 +162,17 @@ var buildCoverallsCoverage = function () {
 		} else {
 			console.log('Got information about ' + lo.size(data) + ' tests');
 
+
 			lo.forEach(data, function (row) {
 				class_id = row.ApexClassOrTriggerId;
-        console.log('class_id '+class_id);
-        console.log('id_to_class_map '+ id_to_class_map);
-        console.log('max_line ' + max_line = lo.max(lo.union(row.Coverage.coveredLines, row.Coverage.uncoveredLines)));
-        console.log('coverage_size ' +lo.size(id_to_class_map[class_id].coverage));
-        console.log('coveredLines ' +row.Coverage.coveredLines);
-        console.log('uncoveredLines ' +row.Coverage.uncoveredLines);
+
 				if (lo.has(id_to_class_map, class_id)) {
 					max_line = lo.max(lo.union(row.Coverage.coveredLines, row.Coverage.uncoveredLines));
 					coverage_size = lo.size(id_to_class_map[class_id].coverage);
-          console.log(coverage_size);
-          console.log(max_line);
+
 					if (max_line > coverage_size) {
 						for (i = coverage_size; i <= max_line; i += 1) {
 							id_to_class_map[class_id].coverage.push(null);
-              console.log('we are pushing null...');
 						}
 					}
 
@@ -223,7 +215,6 @@ var postToCoveralls = function () {
 		};
 
 	console.log('Posting data to coveralls');
-  console.log(JSON.stringify(coveralls_data));
 
 	fs.writeFile('/tmp/coveralls_data.json', JSON.stringify(coveralls_data), function (fs_error) {
 		if (fs_error) {
